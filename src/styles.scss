@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap");
+// Primary colors
+$redColor: hsl(1, 90%, 64%);
+$blueColor: hsl(219, 85%, 26%);
+// Neutral colors
+$whiteColor: hsl(0, 0%, 100%);
+$veryLightGrayishBlue: hsl(210, 60%, 98%);
+$lightGrayishBlue_1: hsl(211, 68%, 94%);
+$lightGrayishBlue_2: hsl(205, 33%, 90%);
+$grayishBlue: hsl(219, 14%, 63%);
+$darkGrayishBlue: hsl(219, 12%, 42%);
+$veryDarkBlue: hsl(224, 21%, 14%);
+
+$fontSize: 16px;
+$fontFamily: "Plus Jakarta Sans", sans-serif;
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: $fontFamily;
+}
+body {
+  font-size: $fontSize;
+  background-color: $lightGrayishBlue_2;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  max-width: 700px;
+  background-color: $whiteColor;
+  margin: 4rem 0;
+  padding: 2rem;
+  padding-bottom: 0.5rem;
+  border-radius: 10px;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  h1 {
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    span {
+      background-color: $blueColor;
+      color: $whiteColor;
+      padding: 0.2rem 0.6rem;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    color: $darkGrayishBlue;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  button:hover {
+    color: $blueColor;
+  }
+}
+main {
+  #notifications {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .notification {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.75rem 0.5rem;
+    position: relative;
+    border-radius: 5px;
+    .left {
+      width: 10%;
+    }
+    img {
+      width: 70%;
+      margin: 0 auto;
+      display: block;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      width: 90%;
+      p {
+        font-size: 1rem;
+        color: $darkGrayishBlue;
+        .name {
+          text-decoration: none;
+          color: $veryDarkBlue;
+          font-weight: 800;
+          margin-right: 0.25rem;
+        }
+        .name:hover,
+        #tournament:hover {
+          color: $blueColor;
+        }
+        #tournament {
+          font-weight: 800;
+          color: $darkGrayishBlue;
+          text-decoration: none;
+        }
+        .group {
+          font-weight: 800;
+          color: $blueColor;
+          text-decoration: none;
+        }
+        .post {
+          font-weight: 800;
+        }
+      }
+      .time {
+        font-size: 0.95rem;
+        color: $grayishBlue;
+      }
+      .message {
+        margin-top: 0.5rem;
+        margin-right: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+
+        border: 1px solid $lightGrayishBlue_2;
+      }
+      .message:hover {
+        background-color: $lightGrayishBlue_2;
+        cursor: pointer;
+      }
+    }
+    .img-wrapper {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+      width: 7%;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      img {
+        width: 100%;
+        display: block;
+        object-fit: contain;
+      }
+    }
+    .img-wrapper:hover {
+      border-color: $lightGrayishBlue_2;
+      cursor: pointer;
+    }
+  }
+  .notification.unread {
+    background-color: $veryLightGrayishBlue;
+    .dot::after {
+      content: "";
+      display: inline-block;
+      margin-bottom: 0.15rem;
+      margin-left: 0.2rem;
+      border-radius: 50%;
+      width: 7px;
+      height: 7px;
+      background-color: $redColor;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .App {
+    margin: unset;
+    padding: 1rem;
+    border-radius: unset;
+  }
+  header {
+    margin-bottom: 1.25rem;
+    h1 {
+      font-size: 1.25rem;
+      gap: 0.5rem;
+    }
+    button {
+      font-size: 0.9rem;
+    }
+  }
+  main {
+    .notification {
+      .left {
+        width: 20%;
+      }
+      .right {
+        width: 80%;
+        p{
+            font-size: 0.85rem;
+            .dot::after{
+                margin-bottom: unset;
+            }
+        }
+        .time{
+            font-size: 0.8rem;
+        }
+      }
+      
+    }
+    .notification:nth-of-type(5){
+        .right{
+            width: 60% !important;
+          }
+          .img-wrapper{
+            position: static;
+            transform: unset;
+            width: 12%;
+            margin-left: 1rem;
+          }
+    }
+  }
+}
